@@ -3,6 +3,7 @@ $side: 200px;
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -14,13 +15,14 @@ img {
   height: 100%;
 }
 
-.puzzle{
+.puzzle {
   width: $side;
   height: $side;
   background-color: darkcyan;
   border: 1px solid black;
-  position:relative;
-
+  position: relative;
+  border-radius: 3.75%;
+  margin: 0 auto;
 }
 
 .square{
@@ -28,61 +30,31 @@ img {
   height: 25%;
   background-color: white;
   border: 1px solid black;
-  border-radius: 10%;
+  border-radius: 15%;
   position: absolute;
   cursor: pointer;
   user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.square-1{
-  transform: translate(0%, 0%);
-}
-.square-2{
-  transform: translate(100%, 0%);
-}
-.square-3{
-  transform: translate(200%, 0%);
-}
-.square-4{
-  transform: translate(300%, 0%);
-}
-.square-5{
-  transform: translate(0%, 100%);
-}
-.square-6{
-  transform: translate(100%, 100%);
-}
-.square-7{
-  transform: translate(200%, 100%);
-}
-.square-8{
-  transform: translate(300%, 100%);
-}
-.square-9{
-  transform: translate(0%, 200%);
-}
-.square-10{
-  transform: translate(100%, 200%);
-}
-.square-11{
-  transform: translate(200%, 200%);
-}
-.square-12{
-  transform: translate(300%, 200%);
-}
-.square-13{
-  transform: translate(0%, 300%);
-}
-.square-14{
-  transform: translate(100%, 300%);
-}
-.square-15{
-  transform: translate(200%, 300%);
+  transition: transform .2s linear;
 }
 .square-0{
-  transform: translate(300%, 300%);
-  background-color: powderblue;
+  opacity: 0;
 }
 
+
+.win-banner{
+  display: none;
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: orangered;
+  .br{
+    display: block;
+    text-align: center;
+  }
+}
