@@ -1,6 +1,6 @@
 export default class FifteenPuzzle {
-  constructor(reference) {
-    this._puzzleRef = document.querySelector(reference);
+  constructor(selector) {
+    this._puzzleRef = document.querySelector(selector);
     this._victory = false;
     this._gameState = [
       [1, 2, 3, 4],
@@ -8,11 +8,11 @@ export default class FifteenPuzzle {
       [9, 10, 11, 12],
       [13, 14, 15, 0],
     ];
-    this._indexZero;
-    this._indexToMove;
-    this._directionOfMove;
-    this._numberRequestToMove;
-    this._mixedArray;
+    this._indexZero = null;
+    this._indexToMove = null;
+    this._directionOfMove = null;
+    this._numberRequestToMove = null;
+    this._mixedArray = null;
     this._puzzleRef.addEventListener('click', this._puzzleHolder.bind(this));
     this._init();
   }
