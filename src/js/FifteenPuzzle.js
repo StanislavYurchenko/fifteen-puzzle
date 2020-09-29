@@ -1,6 +1,6 @@
 export default class FifteenPuzzle {
   constructor(reference) {
-    this._puzzleRef = document.querySelector(`${reference}`);
+    this._puzzleRef = document.querySelector(reference);
     this._victory = false;
     this._gameState = [
       [1, 2, 3, 4],
@@ -22,7 +22,6 @@ export default class FifteenPuzzle {
       .flat()
       .some((item, i) => item > 0 && item - 1 !== i);
   }
-
   _markup() {
     const list = document.createElement('ul');
     list.classList.add('square__list');
