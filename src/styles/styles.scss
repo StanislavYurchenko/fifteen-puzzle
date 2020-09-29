@@ -23,6 +23,11 @@ li {
 }
 
 .puzzle {
+  padding: 5px;
+  position: relative;
+}
+
+.square__list {
   width: $side;
   height: $side;
   background-color: darkcyan;
@@ -53,7 +58,7 @@ li {
 .win-banner {
   display: none;
   position: absolute;
-  width: 80%;
+  width: $side;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
