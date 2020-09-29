@@ -3,7 +3,6 @@ import './styles/styles.scss';
 class FifteenPuzzle {
   constructor(reference) {
     this._puzzleRef = document.querySelector(`${reference}`);
-    // this._squareRefs = Array.from(this._puzzleRef.querySelectorAll('.square'));
     this._winBannerRef = this._puzzleRef.querySelector('.win-banner');
     this._victory = false;
     this._gameState = [
@@ -12,6 +11,11 @@ class FifteenPuzzle {
       [9, 10, 11, 12],
       [13, 14, 15, 0],
     ];
+    this._indexZero;
+    this._indexToMove;
+    this._directionOfMove;
+    this._numberRequestToMove;
+    this._mixedArray;
     this._puzzleRef.addEventListener('click', this._puzzleHolder.bind(this));
     this._init();
   }
@@ -22,10 +26,10 @@ class FifteenPuzzle {
       .some((item, i) => item > 0 && item - 1 !== i);
   }
 
-  _markup(state) {
+  _markup() {
     const list = document.createElement('ul');
     list.classList.add('square__list');
-    state.forEach((row, indexRow) => {
+    this._gameState.forEach((row, indexRow) => {
       row.forEach((square, indexColumn) => {
         const squareItem = document.createElement('li');
         squareItem.classList.add('square__item');
@@ -37,14 +41,15 @@ class FifteenPuzzle {
     });
     this._puzzleRef.appendChild(list);
   }
-  _arrangeGameState(state) {
-    state.forEach((row, indexRow) => {
+  _arrangeGameState() {
+    this._gameState.forEach((row, indexRow) => {
       row.forEach((square, indexColumn) => {
         const squareRefs = Array.from(
           this._puzzleRef.querySelectorAll('.square__item'),
         );
         const squareRef = squareRefs.find(
-          el => el.dataset.number === `${state[indexRow][indexColumn]}`,
+          el =>
+            el.dataset.number === `${this._gameState[indexRow][indexColumn]}`,
         );
         squareRef.style.transform = `translate(${indexColumn * 100}%, ${
           indexRow * 100
@@ -52,8 +57,8 @@ class FifteenPuzzle {
       });
     });
   }
-  _findIndexElement(numberToMove, state) {
-    return state.reduce((acc, row, rowIndex) => {
+  _findIndexElement(numberToMove) {
+    return this._gameState.reduce((acc, row, rowIndex) => {
       if (row.indexOf(numberToMove) === -1) return acc;
       return {
         ...acc,
@@ -61,39 +66,55 @@ class FifteenPuzzle {
       };
     }, {});
   }
-  _findDirectionOfMove(indexToMove, indexZero) {
+  _findDirectionOfMove() {
     if (
-      indexToMove.rowIndex === indexZero.rowIndex - 1 &&
-      indexToMove.colIndex === indexZero.colIndex
+      this._indexToMove.rowIndex === this._indexZero.rowIndex - 1 &&
+      this._indexToMove.colIndex === this._indexZero.colIndex
     )
       return 'toDown';
     if (
-      indexToMove.rowIndex === indexZero.rowIndex + 1 &&
-      indexToMove.colIndex === indexZero.colIndex
+      this._indexToMove.rowIndex === this._indexZero.rowIndex + 1 &&
+      this._indexToMove.colIndex === this._indexZero.colIndex
     )
       return 'toUp';
     if (
-      indexToMove.rowIndex === indexZero.rowIndex &&
-      indexToMove.colIndex === indexZero.colIndex - 1
+      this._indexToMove.rowIndex === this._indexZero.rowIndex &&
+      this._indexToMove.colIndex === this._indexZero.colIndex - 1
     )
       return 'toRight';
     if (
-      indexToMove.rowIndex === indexZero.rowIndex &&
-      indexToMove.colIndex === indexZero.colIndex + 1
+      this._indexToMove.rowIndex === this._indexZero.rowIndex &&
+      this._indexToMove.colIndex === this._indexZero.colIndex + 1
     )
       return 'toLeft';
     return 'impossible';
   }
-  _changePosition(direction, indexToMove, indexZero, state) {
-    if (direction === 'toDown' || direction === 'toUp') {
-      state[indexZero.rowIndex][indexZero.colIndex] =
-        state[indexToMove.rowIndex][indexToMove.colIndex];
-      state[indexToMove.rowIndex][indexToMove.colIndex] = 0;
+  _changePosition() {
+    if (
+      this._directionOfMove === 'toDown' ||
+      this._directionOfMove === 'toUp'
+    ) {
+      this._gameState[this._indexZero.rowIndex][
+        this._indexZero.colIndex
+      ] = this._gameState[this._indexToMove.rowIndex][
+        this._indexToMove.colIndex
+      ];
+      this._gameState[this._indexToMove.rowIndex][
+        this._indexToMove.colIndex
+      ] = 0;
     }
-    if (direction === 'toRight' || direction === 'toLeft') {
-      state[indexZero.rowIndex][indexZero.colIndex] =
-        state[indexToMove.rowIndex][indexToMove.colIndex];
-      state[indexToMove.rowIndex][indexToMove.colIndex] = 0;
+    if (
+      this._directionOfMove === 'toRight' ||
+      this._directionOfMove === 'toLeft'
+    ) {
+      this._gameState[this._indexZero.rowIndex][
+        this._indexZero.colIndex
+      ] = this._gameState[this._indexToMove.rowIndex][
+        this._indexToMove.colIndex
+      ];
+      this._gameState[this._indexToMove.rowIndex][
+        this._indexToMove.colIndex
+      ] = 0;
     }
   }
   _showWinnerBanner() {
@@ -105,50 +126,38 @@ class FifteenPuzzle {
     if (this._victory) return;
     const { target, currentTarget } = event;
     if (currentTarget === target || target.dataset.number === '0') return;
-    const numberRequestToMove = +target.dataset.number;
-    const indexToMove = this._findIndexElement(
-      numberRequestToMove,
-      this._gameState,
-    );
-    const indexZero = this._findIndexElement(0, this._gameState);
-    const directionOfMove = this._findDirectionOfMove(indexToMove, indexZero);
+    this._numberRequestToMove = +target.dataset.number;
+    this._indexToMove = this._findIndexElement(this._numberRequestToMove);
+    this._indexZero = this._findIndexElement(0);
+    this._directionOfMove = this._findDirectionOfMove();
 
-    this._changePosition(
-      directionOfMove,
-      indexToMove,
-      indexZero,
-      this._gameState,
-    );
-    this._arrangeGameState(this._gameState);
+    this._changePosition();
+    this._arrangeGameState();
     this._victory = this.isWin();
     this._showWinnerBanner();
   }
+  _mixArray(arr) {
+    let j, temp;
+    for (let i = arr.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = arr[j];
+      arr[j] = arr[i];
+      arr[i] = temp;
+    }
+    if (!this._isArraySolvable(arr)) {
+      this._mixArray(arr);
+    }
+    return arr;
+  }
   _newGameState() {
-    let max = 15;
     let index = 1;
-    const array = Array.from({ length: max }, () => index++);
-
-    const mixArray = arr => {
-      let j, temp;
-      for (let i = arr.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = arr[j];
-        arr[j] = arr[i];
-        arr[i] = temp;
-      }
-      if (!this._isArraySolvable(arr)) {
-        mixArray(arr);
-      }
-      return arr;
-    };
-
-    const mixedArray = mixArray(array);
-
+    const array = Array.from({ length: 15 }, () => index++);
+    this._mixedArray = this._mixArray(array);
     return this._gameState.map((row, indexRow) => {
       return [
         ...row.map((el, indexColumn) => {
           if (indexRow === 3 && indexColumn === 3) return 0;
-          return mixedArray[indexRow * 4 + indexColumn];
+          return this._mixedArray[indexRow * 4 + indexColumn];
         }),
       ];
     });
@@ -161,8 +170,8 @@ class FifteenPuzzle {
   }
   _init() {
     this._gameState = this._newGameState();
-    this._markup(this._gameState);
-    this._arrangeGameState(this._gameState);
+    this._markup();
+    this._arrangeGameState();
   }
 }
 
