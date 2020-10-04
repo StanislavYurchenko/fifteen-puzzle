@@ -1,0 +1,48 @@
+.puzzle {
+  padding: 5px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.square__list {
+  width: $containerSide;
+  height: $containerSide;
+  background-color: darkcyan;
+  border: 1px solid black;
+  position: relative;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.square__item {
+  width: 25%;
+  height: 25%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s linear;
+}
+.square-0 {
+  opacity: 0;
+}
+
+.win-banner {
+  display: none;
+  position: absolute;
+  width: $containerSide;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: greenyellow;
+  .br {
+    display: block;
+    text-align: center;
+  }
+}

@@ -1,72 +1,26 @@
-$side: 200px;
+@import './base.scss';
+@import './fifteenPuzle.scss';
+@import './timer.scss';
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-img {
-  max-width: 100%;
-  display: block;
-  height: 100%;
-}
-ul {
-  padding: 0;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
-
-.puzzle {
+.form-box {
   padding: 5px;
-  position: relative;
-}
-
-.square__list {
-  width: $side;
-  height: $side;
+  margin: 0 auto;
+  width: $containerSide;
   background-color: darkcyan;
   border: 1px solid black;
-  position: relative;
-  border-radius: 3.75%;
-  margin: 0 auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-
-.square__item {
-  width: 25%;
-  height: 25%;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 15%;
-  position: absolute;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s linear;
+.form {
 }
-.square-0 {
-  opacity: 0;
+.form__button {
+  display: block;
+  width: 100%;
 }
-
-.win-banner {
-  display: none;
-  position: absolute;
-  width: $side;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background-color: orangered;
-  .br {
-    display: block;
-    text-align: center;
-  }
+.form__label {
+  display: block;
 }
-// TIMER
+.form__input {
+}
+.form__deck {
+}

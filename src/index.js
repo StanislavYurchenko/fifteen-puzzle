@@ -1,8 +1,18 @@
 import './styles/styles.scss';
-import FifteenPuzzle from './js/FifteenPuzzle.js';
-import Timer from './js/Timer.js';
+import FifteenPuzzle from './js/FifteenPuzzle/FifteenPuzzle.js';
+import Timer from './js/Timer/Timer.js';
+
+const formRef = document.querySelector('.form');
+
+const formHolder = event => {
+  event.preventDefault();
+  const { target } = event;
+  const selectedTime = target.elements.time.value;
+  console.log(selectedTime);
+};
 
 const fifteenPuzzle = new FifteenPuzzle('.puzzle');
-const timer = new Timer('.timer', Date.now() + 1000 * 60 * 60);
+// fifteenPuzzle.start();
+const timer = new Timer('.timer', 1000 * 60 * 60);
 
-// timer.start();
+formRef.addEventListener('submit', formHolder);

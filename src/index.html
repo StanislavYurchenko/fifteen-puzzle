@@ -8,7 +8,29 @@
   </head>
 
   <body>
-    <div class="timer"></div>
+    <div class="form-box">
+      <form class="form">
+        <button class="form__button button" type="submit" name="start">start new game</button>
+
+        <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="1" />
+          <span class="form__deck">1 min</span>
+        </label>
+
+        <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="3" checked />
+          <span class="form__deck">3 min</span>
+        </label>
+
+        <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="10" />
+          <span class="form__deck">10 min</span>
+        </label>
+      </form>
+    </div>
+
     <div class="puzzle"></div>
+
+    <div class="timer"></div>
   </body>
 </html>
