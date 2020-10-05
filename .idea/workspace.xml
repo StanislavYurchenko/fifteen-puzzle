@@ -12,6 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f89bfab0-c149-46e9-b2af-c4bfb480b817" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +40,23 @@
       <recent name="D:\Projects\fifteen-puzzle\src\styles" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,7 +67,8 @@
       <updated>1601214292466</updated>
       <workItem from="1601214295142" duration="15068000" />
       <workItem from="1601275753340" duration="26072000" />
-      <workItem from="1601876425652" duration="9820000" />
+      <workItem from="1601876425652" duration="12935000" />
+      <workItem from="1601891561262" duration="569000" />
     </task>
     <servers />
   </component>
@@ -69,6 +88,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601888503884">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1601888503884" />
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1601891267555">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1601891267555" />
+    <state width="1899" height="285" key="GridCell.Tab.0.center" timestamp="1601891267554">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1601891267554" />
+    <state width="1899" height="285" key="GridCell.Tab.0.left" timestamp="1601891267554">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1601891267554" />
+    <state width="1899" height="285" key="GridCell.Tab.0.right" timestamp="1601891267554">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1601891267554" />
     <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1601880192327">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
