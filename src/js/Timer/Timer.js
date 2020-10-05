@@ -9,8 +9,6 @@
 
 import timerMarkup from './timerMarkup.hbs';
 
-
-
 export default class CountdownTimer {
   constructor(selector, callback) {
     this._selector = document.querySelector(selector);
@@ -30,17 +28,17 @@ export default class CountdownTimer {
       secs: this._selector.querySelector('.timer__time-left--sec-value'),
       btnStart: this._selector.querySelector('.timer__btn--start'),
       btnStop: this._selector.querySelector('.timer__btn--stop'),
-      form: this._selector.querySelector('.form')
+      form: this._selector.querySelector('.form'),
     };
     this._deltaTargetTime = this._refs.form.elements.time.value * 1000 * 60;
 
     this._refs.btnStart.addEventListener('click', this.start.bind(this));
     this._refs.btnStop.addEventListener('click', this.stop.bind(this));
     this._refs.form.addEventListener('click', this._updateTargetTime.bind(this));
-    this._render(true)
+    this._render(true);
   }
 
-  _updateTargetTime(){
+  _updateTargetTime() {
     this._deltaTargetTime = this._refs.form.elements.time.value * 1000 * 60;
     this._render(true);
   }

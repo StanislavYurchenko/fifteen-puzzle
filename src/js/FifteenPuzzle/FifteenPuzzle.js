@@ -1,5 +1,5 @@
 export default class FifteenPuzzle {
-  constructor(selector) {
+  constructor(selector, callback) {
     this._puzzleRef = document.querySelector(selector);
     this._victory = false;
     this._gameState = [
@@ -8,6 +8,7 @@ export default class FifteenPuzzle {
       [9, 10, 11, 12],
       [13, 14, 15, 0],
     ];
+    this.callback = callback;
     this._indexZero = null;
     this._indexToMove = null;
     this._directionOfMove = null;
@@ -18,7 +19,11 @@ export default class FifteenPuzzle {
   }
 
   isWin() {
-    return !this._gameState.flat().some((item, i) => item > 0 && item - 1 !== i);
+    const isWin =
+      this._directionOfMove &&
+      !this._gameState.flat().some((item, i) => item > 0 && item - 1 !== i);
+    if (isWin) this.callback();
+    return isWin;
   }
   _markup() {
     const list = document.createElement('ul');
@@ -99,8 +104,14 @@ export default class FifteenPuzzle {
   }
   _showWinnerBanner() {
     if (this._victory) {
+      console.log('this._victory', this._victory);
       this._puzzleRef.querySelector('.win-banner').style.display = 'block';
     }
+  }
+  _initNewGame() {
+    this._victory = false;
+    this._puzzleRef.querySelector('.win-banner').style.display = 'none';
+    console.log('qq');
   }
   _puzzleHolder(event) {
     if (this._victory) return;
@@ -157,5 +168,6 @@ export default class FifteenPuzzle {
   start() {
     this._gameState = this._newGameState();
     this._arrangeGameState();
+    this._initNewGame();
   }
 }

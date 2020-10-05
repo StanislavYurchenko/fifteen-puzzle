@@ -2,9 +2,13 @@ import './styles/styles.scss';
 import FifteenPuzzle from './js/FifteenPuzzle/FifteenPuzzle.js';
 import CountdownTimer from './js/Timer/Timer.js';
 
-const fifteenPuzzle = new FifteenPuzzle('.puzzle');
+const fifteenPuzzle = new FifteenPuzzle('.puzzle', stopTimer);
 
-const newGame = () =>   fifteenPuzzle.start();
+function newGame() {
+  fifteenPuzzle.start();
+}
+function stopTimer() {
+  timer.stop();
+}
 
 const timer = new CountdownTimer('.timer', newGame);
-
