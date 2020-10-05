@@ -9,15 +9,20 @@
 
 import timerMarkup from './timerMarkup.hbs';
 
+
+
 export default class CountdownTimer {
-  constructor(selector, deltaTargetTime) {
+  constructor(selector, callback) {
     this._selector = document.querySelector(selector);
-    this._deltaTargetTime = deltaTargetTime;
+    this._callback = callback;
     this._intervalId = null;
     this._btnStatus = {
       start: 'start',
       stop: 'reset',
     };
+    this._startTime = null;
+    this._pauseTime = null;
+    this._pauseStartTime = null;
     this._initRender();
     this._refs = {
       hours: this._selector.querySelector('.timer__time-left--hour-value'),
@@ -25,36 +30,43 @@ export default class CountdownTimer {
       secs: this._selector.querySelector('.timer__time-left--sec-value'),
       btnStart: this._selector.querySelector('.timer__btn--start'),
       btnStop: this._selector.querySelector('.timer__btn--stop'),
+      form: this._selector.querySelector('.form')
     };
-    this._refs.btnStart.addEventListener('click', this._btnStartHolder.bind(this));
-    this._refs.btnStop.addEventListener('click', this._btnStopHolder.bind(this));
-    this._startTime = null;
-    this._pauseTime = null;
-    this._pauseStartTime = null;
+    this._deltaTargetTime = this._refs.form.elements.time.value * 1000 * 60;
+
+    this._refs.btnStart.addEventListener('click', this.start.bind(this));
+    this._refs.btnStop.addEventListener('click', this.stop.bind(this));
+    this._refs.form.addEventListener('click', this._updateTargetTime.bind(this));
+    this._render(true)
   }
 
-  _btnStartHolder() {
+  _updateTargetTime(){
+    this._deltaTargetTime = this._refs.form.elements.time.value * 1000 * 60;
+    this._render(true);
+  }
+
+  start() {
     if (this._btnStatus.start === 'start') {
       this._changeBtnSts('start', 'pause');
-      this.start();
+      this._start();
       this._refs.btnStop.disabled = false;
       return;
     }
     if (this._btnStatus.start === 'pause') {
       this._changeBtnSts('start', 'resume');
-      this.pause();
+      this._pause();
       return;
     }
     if (this._btnStatus.start === 'resume') {
       this._changeBtnSts('start', 'pause');
-      this.resume();
+      this._resume();
       return;
     }
   }
 
-  _btnStopHolder() {
+  stop() {
     this._changeBtnSts('start', 'start');
-    this.stop();
+    this._stop();
     this._refs.btnStop.disabled = true;
     return;
   }
@@ -116,25 +128,26 @@ export default class CountdownTimer {
     }, 1000);
   }
 
-  start() {
+  _start() {
     this._startTime = this._getTimeNow();
     this._render();
     this._tick();
+    this._callback && this._callback();
   }
 
-  pause() {
+  _pause() {
     this._pauseStartTime = this._getTimeNow();
     this._render();
     clearTimeout(this._intervalId);
   }
 
-  resume() {
+  _resume() {
     this._pauseTime += this._getTimeNow() - this._pauseStartTime;
     this._render();
     this._tick();
   }
 
-  stop() {
+  _stop() {
     this._pauseTime = null;
     this._pauseStartTime = null;
     clearTimeout(this._intervalId);

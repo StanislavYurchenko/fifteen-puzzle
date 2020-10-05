@@ -5,9 +5,27 @@
       <span class="timer__time-left timer__time-left--min-value">{{minLeftValue}}</span>
       <span class="timer__time-left timer__time-left--sec-lbl">sec:</span>
       <span class="timer__time-left timer__time-left--sec-value">{{secLeftValue}}</span>
+</div>
 
-</div>
+
 <div class="timer__control">
-      <button class="timer__btn timer__btn--start" type="button">{{btnStartLabel}}</button>
-      <button class="timer__btn timer__btn--stop" type="button" disabled>{{btnStopLabel}}</button>
+    <button class="timer__btn timer__btn--start" type="button">{{btnStartLabel}}</button>
+    <button class="timer__btn timer__btn--stop" type="button" disabled>{{btnStopLabel}}</button>
 </div>
+
+<form class="form">
+    <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="1" />
+          <span class="form__deck">1 min</span>
+    </label>
+
+    <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="3" checked />
+          <span class="form__deck">3 min</span>
+    </label>
+
+    <label class="form__label">
+          <input class="form__input" type="radio" name="time" value="10" />
+          <span class="form__deck">10 min</span>
+    </label>
+</form>

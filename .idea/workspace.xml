@@ -14,7 +14,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/FifteenPuzzle/FifteenPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/FifteenPuzzle/FifteenPuzzle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Timer/Timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Timer/Timer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/Timer/timerMarkup.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/Timer/timerMarkup.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,7 @@
       <updated>1601214292466</updated>
       <workItem from="1601214295142" duration="15068000" />
       <workItem from="1601275753340" duration="26072000" />
+      <workItem from="1601876425652" duration="9492000" />
     </task>
     <servers />
   </component>
@@ -68,5 +71,15 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1601880192327">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1601880192327" />
+    <state x="21" y="0" width="1915" height="717" key="dock-window-1" timestamp="1601880301547">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="21" y="0" width="1915" height="717" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1601880301547" />
   </component>
 </project>

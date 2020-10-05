@@ -156,7 +156,6 @@ export default class FifteenPuzzle {
   }
   start() {
     this._gameState = this._newGameState();
-    this._markup();
     this._arrangeGameState();
   }
 }
